@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nanoclean | خدمات التنظيف والصيانة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        /* ===== RESET ===== */
         * {
             margin: 0;
             padding: 0;
@@ -16,465 +17,762 @@
         }
         body {
             font-family: 'Cairo', sans-serif;
-            background: #fcfafb;
-            color: #2d1b21;
+            background: #fcf8f6;
+            color: #3d2a2b;
             direction: rtl;
         }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
 
-        /* ===== البانر العلوي ===== */
+        /* ===== شريط التواصل العلوي (ثابت) ===== */
+        .top-contact-bar {
+            background: #ffffff;
+            padding: 10px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 15px 30px;
+            border-bottom: 2px solid #f5e6e8;
+            box-shadow: 0 2px 12px rgba(180, 120, 140, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.92);
+        }
+        .top-contact-bar a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #3d2a2b;
+            padding: 4px 12px;
+            border-radius: 40px;
+            transition: 0.2s;
+        }
+        .top-contact-bar a i {
+            font-size: 18px;
+            color: #c48b7d;
+            width: 24px;
+            text-align: center;
+        }
+        .top-contact-bar a:hover {
+            background: #fce4ec;
+            color: #a85770;
+        }
+        .top-contact-bar .divider {
+            width: 1px;
+            height: 24px;
+            background: #e8d6da;
+        }
+        @media (max-width: 600px) {
+            .top-contact-bar {
+                gap: 6px 12px;
+                padding: 8px 10px;
+            }
+            .top-contact-bar a {
+                font-size: 12px;
+                padding: 2px 6px;
+            }
+            .top-contact-bar a i {
+                font-size: 15px;
+                width: 20px;
+            }
+            .top-contact-bar .divider {
+                display: none;
+            }
+        }
+
+        /* ===== الهيرو (الواجهة الرئيسية) ===== */
         .hero {
-            position: relative;
-            min-height: 85vh;
-            background: url('https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1400&h=800&fit=crop&q=80') center/cover no-repeat;
+            min-height: 92vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, #fce4ec 0%, #fdf1f0 40%, #f8e8e4 100%);
         }
+        /* صورة الخلفية */
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(25, 12, 18, 0.65);
-            backdrop-filter: blur(2px);
+            background: url('https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/hero-bg.png') center/cover no-repeat;
+            opacity: 0.10;
+            filter: blur(1px);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
         }
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 850px;
+            padding: 20px;
         }
-        .hero-content .logo-icon {
-            font-size: 70px;
-            color: #d4af37;
-            text-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
-            display: block;
+        /* الشعار */
+        .hero-logo img {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
             margin-bottom: 10px;
+            filter: drop-shadow(0 8px 30px rgba(60, 40, 42, 0.10));
         }
-        .hero-content h1 {
-            font-size: clamp(2.8rem, 10vw, 5rem);
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 2px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-        .hero-content h1 span {
-            color: #d4af37;
-        }
-        .hero-content .sub-title {
-            font-size: clamp(1rem, 3vw, 1.6rem);
-            color: #f0e6ea;
-            font-weight: 300;
-            margin: 15px 0 25px;
+        .hero-sub {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: #6e4e52;
+            font-weight: 400;
+            margin-top: 8px;
             letter-spacing: 1px;
-            background: rgba(0,0,0,0.25);
-            display: inline-block;
-            padding: 8px 30px;
-            border-radius: 50px;
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255,215,215,0.15);
         }
-        .hero-content .sub-title i {
+        .hero-sub i {
             color: #d4af37;
-            margin: 0 5px;
+            margin: 0 6px;
+        }
+        .hero-slogan {
+            font-size: clamp(1rem, 2.2vw, 1.5rem);
+            color: #8a6a6e;
+            font-weight: 300;
+            margin: 12px 0 20px;
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(4px);
+            padding: 8px 24px;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .hero-slogan i {
+            color: #d4af37;
+            margin: 0 6px;
         }
         .hero-badges {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 12px 24px;
+            margin-top: 25px;
         }
         .hero-badges .badge {
-            background: rgba(255,255,255,0.12);
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(196, 139, 125, 0.15);
             padding: 8px 22px;
             border-radius: 40px;
-            color: #fff;
-            font-weight: 400;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .hero-badges .badge i {
-            color: #d4af37;
-        }
-
-        /* ===== شريط التواصل السريع ===== */
-        .contact-strip {
-            background: #ffffff;
-            padding: 20px 30px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 20px 40px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
-            border-bottom: 2px solid #f2e6ea;
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            backdrop-filter: blur(10px);
-            background: rgba(255,255,255,0.92);
-        }
-        .contact-strip a {
-            text-decoration: none;
-            color: #2d1b21;
-            font-weight: 600;
+            color: #4d3437;
+            font-weight: 500;
+            font-size: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: 0.2s;
-            padding: 6px 12px;
-            border-radius: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
         }
-        .contact-strip a:hover {
-            background: #f5edef;
-            color: #b8865b;
-        }
-        .contact-strip a i {
-            font-size: 20px;
-            color: #b8865b;
-            width: 30px;
-            text-align: center;
-        }
-        .contact-strip .divider {
-            width: 1px;
-            height: 30px;
-            background: #e0d4d8;
-        }
-        @media (max-width: 600px) {
-            .contact-strip { gap: 10px; padding: 12px 15px; }
-            .contact-strip a { font-size: 13px; padding: 4px 8px; }
-            .contact-strip .divider { display: none; }
+        .hero-badges .badge i {
+            color: #d4af37;
+            font-size: 16px;
         }
 
         /* ===== الحاوية العامة ===== */
         .container {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 30px 25px;
+            padding: 20px 25px 40px;
         }
 
         /* ===== قسم الخدمات ===== */
-        .section-title {
-            font-size: 28px;
+        .services-section {
+            margin: 30px 0 20px;
+        }
+        .services-section .section-title {
+            font-size: 26px;
             font-weight: 700;
-            color: #2d1b21;
-            margin: 50px 0 10px;
+            color: #3d2a2b;
+            margin-bottom: 4px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             border-right: 6px solid #d4af37;
             padding-right: 20px;
         }
-        .section-title i {
-            color: #b8865b;
+        .services-section .section-title i {
+            color: #c48b7d;
         }
-        .section-desc {
-            color: #7a5f69;
-            margin-bottom: 25px;
+        .services-section .section-desc {
+            color: #8a6a6e;
             padding-right: 26px;
+            margin-bottom: 25px;
             font-weight: 300;
+            font-size: 15px;
         }
 
-        .services-grid {
+        .services-horizontal {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
         }
-        .service-item {
+        .service-dropdown {
             background: #ffffff;
-            border-radius: 18px;
-            padding: 15px 18px;
+            border-radius: 24px;
+            border: 1px solid #f0e6e8;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+            transition: 0.25s ease;
+        }
+        .service-dropdown:hover {
+            border-color: #d4af37;
+            box-shadow: 0 12px 32px rgba(196, 139, 125, 0.08);
+        }
+        .service-dropdown .dropdown-header {
+            padding: 16px 22px;
             display: flex;
             align-items: center;
-            gap: 14px;
-            border: 1px solid #f2e6ea;
-            transition: 0.25s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            justify-content: space-between;
+            cursor: pointer;
+            background: #fcf8f6;
+            font-weight: 700;
+            font-size: 18px;
+            color: #3d2a2b;
+            transition: 0.2s;
+            user-select: none;
         }
-        .service-item:hover {
-            transform: translateY(-4px);
-            border-color: #d4af37;
-            box-shadow: 0 12px 30px rgba(180, 120, 140, 0.08);
+        .service-dropdown .dropdown-header:hover {
+            background: #fce4ec;
         }
-        .service-item .num {
-            background: #f8f0f3;
-            color: #a85770;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
+        .service-dropdown .dropdown-header i:first-child {
+            color: #c48b7d;
+            margin-left: 12px;
+            font-size: 20px;
+        }
+        .service-dropdown .dropdown-header .arrow {
+            color: #c48b7d;
+            transition: 0.3s;
+        }
+        .service-dropdown .dropdown-header.open .arrow {
+            transform: rotate(180deg);
+        }
+        .service-dropdown .dropdown-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease, padding 0.3s ease;
+            padding: 0 22px;
+            background: #ffffff;
+        }
+        .service-dropdown .dropdown-body.open {
+            max-height: 900px;
+            padding: 8px 22px 22px;
+        }
+        .service-dropdown .dropdown-body ul li {
+            padding: 7px 0;
+            border-bottom: 1px solid #f5edef;
+            font-size: 14px;
+            font-weight: 400;
+            color: #4d3437;
             display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+        .service-dropdown .dropdown-body ul li:last-child {
+            border-bottom: none;
+        }
+        .service-dropdown .dropdown-body ul li .num {
+            background: #fce4ec;
+            color: #a85770;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 11px;
             flex-shrink: 0;
         }
-        .service-item .text {
+
+        /* ===== السلايدر ===== */
+        .slider-section {
+            margin: 60px 0 30px;
+        }
+        .slider-section .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #3d2a2b;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-right: 6px solid #d4af37;
+            padding-right: 20px;
+        }
+        .slider-section .section-title i {
+            color: #c48b7d;
+        }
+        .slider-section .section-desc {
+            color: #8a6a6e;
+            padding-right: 26px;
+            margin-bottom: 25px;
+            font-weight: 300;
             font-size: 15px;
-            font-weight: 500;
-            color: #2d1b21;
-            line-height: 1.3;
         }
 
-        /* ===== معرض الصور (نساء محجبات + شباب) ===== */
-        .gallery-section {
-            margin: 50px 0 30px;
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
-        }
-        .gallery-card {
-            border-radius: 28px;
-            overflow: hidden;
+        .slider-container {
             position: relative;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-            border: 2px solid #fff;
-            transition: 0.3s;
-            background: #fff;
-        }
-        .gallery-card:hover { transform: scale(1.02); border-color: #d4af37; }
-        .gallery-card img {
             width: 100%;
-            height: 220px;
+            max-width: 1100px;
+            margin: 0 auto;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 16px 50px rgba(196, 139, 125, 0.08);
+            background: #fdf6f0;
+            border: 1px solid #f0e6e8;
+        }
+        .slider-track {
+            display: flex;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+        .slider-slide {
+            min-width: 100%;
+            position: relative;
+        }
+        .slider-slide img {
+            width: 100%;
+            height: 420px;
             object-fit: cover;
             display: block;
         }
-        .gallery-card .caption {
-            padding: 14px 16px;
-            background: #fff;
-            text-align: center;
+        .slider-slide .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 25px 25px 18px;
+            background: linear-gradient(transparent, rgba(60, 40, 42, 0.7));
+            color: #fff;
             font-weight: 600;
-            color: #2d1b21;
-            font-size: 15px;
-            border-top: 1px solid #f2e6ea;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        .gallery-card .caption i {
+        .slider-slide .slide-caption i {
             color: #d4af37;
-            margin-left: 6px;
+            font-size: 20px;
         }
 
-        /* ===== الأزرار النهائية ===== */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: 0.25s;
+        }
+        .slider-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+        .slider-btn.prev {
+            left: 16px;
+        }
+        .slider-btn.next {
+            right: 16px;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 18px;
+        }
+        .slider-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d0c2c7;
+            border: none;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+        .slider-dots .dot.active {
+            background: #c48b7d;
+            width: 28px;
+            border-radius: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .slider-slide img {
+                height: 240px;
+            }
+            .slider-btn {
+                width: 34px;
+                height: 34px;
+                font-size: 14px;
+            }
+            .slider-btn.prev {
+                left: 8px;
+            }
+            .slider-btn.next {
+                right: 8px;
+            }
+            .slider-slide .slide-caption {
+                font-size: 13px;
+                padding: 12px 12px 10px;
+            }
+        }
+
+        /* ===== CTA ===== */
         .cta-section {
-            background: linear-gradient(145deg, #2d1b21, #4e2e38);
+            background: linear-gradient(145deg, #fce4ec, #fdf1f0);
             border-radius: 40px;
-            padding: 40px 30px;
+            padding: 35px 25px;
             text-align: center;
             margin: 40px 0 20px;
-            color: #fff;
+            color: #3d2a2b;
+            border: 1px solid #f0e6e8;
         }
         .cta-section h3 {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .cta-section p {
-            opacity: 0.8;
-            margin-bottom: 25px;
+            color: #6e4e52;
+            margin-bottom: 22px;
             font-weight: 300;
+            font-size: 15px;
         }
         .cta-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
+            gap: 14px;
         }
         .btn {
-            padding: 14px 40px;
+            padding: 12px 34px;
             border-radius: 60px;
             font-weight: 700;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            font-size: 18px;
+            gap: 10px;
+            font-size: 16px;
             transition: 0.25s;
             border: none;
             cursor: pointer;
-            background: #fff;
-            color: #2d1b21;
         }
         .btn-call {
-            background: #d4af37;
-            color: #1f1217;
+            background: #c48b7d;
+            color: #fff;
         }
-        .btn-call:hover { background: #e8c84a; transform: translateY(-3px); }
+        .btn-call:hover {
+            background: #b07466;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(196, 139, 125, 0.3);
+        }
         .btn-whatsapp {
             background: #25D366;
             color: #fff;
         }
-        .btn-whatsapp:hover { background: #128C7E; transform: translateY(-3px); }
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+        }
         .btn-email {
-            background: #8a6a75;
+            background: #8a6a6e;
             color: #fff;
         }
-        .btn-email:hover { background: #6f4e5a; transform: translateY(-3px); }
+        .btn-email:hover {
+            background: #6f4e52;
+            transform: translateY(-3px);
+        }
+        .btn-facebook {
+            background: #1877f2;
+            color: #fff;
+        }
+        .btn-facebook:hover {
+            background: #0d65d9;
+            transform: translateY(-3px);
+        }
 
         /* ===== التذييل ===== */
         .footer {
             text-align: center;
-            padding: 30px 20px 15px;
-            border-top: 1px solid #f2e6ea;
-            margin-top: 40px;
+            padding: 25px 20px 12px;
+            border-top: 1px solid #f0e6e8;
+            margin-top: 30px;
             color: #b69aa6;
             font-weight: 300;
+            font-size: 14px;
         }
-        .footer i { color: #d4af37; }
         .footer .brand-foot {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
-            color: #2d1b21;
+            color: #3d2a2b;
+        }
+        .footer .brand-foot span {
+            color: #c48b7d;
+        }
+        .footer i {
+            color: #d4af37;
         }
 
-        /* ===== تحسينات للهاتف ===== */
         @media (max-width: 600px) {
-            .hero { min-height: 70vh; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .contact-strip a { font-size: 12px; }
-            .services-grid { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: 1fr 1fr; }
-            .section-title { font-size: 22px; }
-            .cta-section { padding: 30px 20px; }
-            .btn { padding: 12px 25px; font-size: 16px; }
-        }
-        @media (max-width: 400px) {
-            .gallery-grid { grid-template-columns: 1fr; }
+            .hero {
+                min-height: 78vh;
+            }
+            .services-horizontal {
+                grid-template-columns: 1fr;
+            }
+            .cta-section {
+                padding: 25px 16px;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .container {
+                padding: 10px 12px 30px;
+            }
+            .services-section .section-title,
+            .slider-section .section-title {
+                font-size: 20px;
+            }
+            .hero-badges .badge {
+                font-size: 13px;
+                padding: 6px 14px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== البانر العلوي ===== -->
-    <section class="hero">
-        <div class="hero-content">
-            <i class="fas fa-spray-can-sparkles logo-icon"></i>
-            <h1>Nano<span>clean</span></h1>
-            <div class="sub-title">
-                <i class="fas fa-location-dot"></i> Annaba · Algérie
-                <span style="margin:0 8px;">|</span>
-                <i class="fas fa-broom"></i> Nettoyage · Entretien · Désinfection
-            </div>
-            <div class="hero-badges">
-                <span class="badge"><i class="fas fa-people-group"></i> فريق محترف</span>
-                <span class="badge"><i class="fas fa-medal"></i> نساء ورجال مختصون</span>
-                <span class="badge"><i class="fas fa-clock"></i> مفتوح الآن</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== شريط التواصل ===== -->
-    <div class="contact-strip">
+    <!-- ===== شريط التواصل العلوي ===== -->
+    <div class="top-contact-bar">
         <a href="tel:0657302602"><i class="fas fa-phone"></i> 0657 30 26 02</a>
         <span class="divider"></span>
         <a href="https://wa.me/213657302602" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
         <span class="divider"></span>
-        <a href="mailto:nanou-milano@live.com"><i class="fas fa-envelope"></i> nanou-milano@live.com</a>
+        <a href="mailto:nanou-milano@live.com"><i class="fas fa-envelope"></i> البريد الإلكتروني</a>
+        <span class="divider"></span>
+        <a href="https://www.facebook.com/share/1HEGnK7fFN" target="_blank"><i class="fab fa-facebook"></i> فيسبوك</a>
     </div>
+
+    <!-- ===== الهيرو ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/logo-icon.png" alt="Nanoclean شعار" />
+            </div>
+            <div class="hero-sub">
+                <i class="fas fa-broom"></i> خدمات تنظيف احترافية
+            </div>
+            <div class="hero-slogan">
+                <i class="fas fa-quote-right"></i>
+                لأن النظافة تعكس إحترافية المكان
+                <i class="fas fa-quote-left"></i>
+            </div>
+            <div class="hero-badges">
+                <span class="badge"><i class="fas fa-check-circle"></i> ثقة ومصداقية</span>
+                <span class="badge"><i class="fas fa-star"></i> أعلى المعايير</span>
+                <span class="badge"><i class="fas fa-leaf"></i> منتجات آمنة</span>
+                <span class="badge"><i class="fas fa-users"></i> فريق مدرب ومؤهل</span>
+            </div>
+        </div>
+    </section>
 
     <!-- ===== المحتوى الرئيسي ===== -->
     <div class="container">
 
-        <!-- ========== 1. خدمات النظافة ========== -->
-        <div class="section-title">
-            <i class="fas fa-broom"></i> خدمات النظافة
-        </div>
-        <div class="section-desc">فريق نسائي محترف ومعدات حديثة لكل أنواع التنظيف</div>
-        <div class="services-grid">
-            <div class="service-item"><span class="num">01</span><span class="text">تنظيف المكاتب الإدارية</span></div>
-            <div class="service-item"><span class="num">02</span><span class="text">تنظيف المحلات التجارية</span></div>
-            <div class="service-item"><span class="num">03</span><span class="text">تنظيف المساكن العائلية</span></div>
-            <div class="service-item"><span class="num">04</span><span class="text">تنظيف سلالم العمارات</span></div>
-            <div class="service-item"><span class="num">05</span><span class="text">تنظيف المساحات العامة</span></div>
-            <div class="service-item"><span class="num">06</span><span class="text">تنظيف البنايات حديثة الأشغال (إزالة بقايا الأسمنت والطلاء، تلميع البلاط)</span></div>
-            <div class="service-item"><span class="num">07</span><span class="text">تنظيف السيارات في المنازل</span></div>
-            <div class="service-item"><span class="num">08</span><span class="text">تنظيف المسابح العامة والخاصة</span></div>
-            <div class="service-item"><span class="num">09</span><span class="text">تنظيف القاعات الرياضية</span></div>
-            <div class="service-item"><span class="num">10</span><span class="text">تنظيف قاعات الحفلات</span></div>
-            <div class="service-item"><span class="num">11</span><span class="text">تنظيف قاعات المؤتمرات</span></div>
-            <div class="service-item"><span class="num">12</span><span class="text">تنظيف المداخن (العمارات، المنازل، المصانع)</span></div>
-            <div class="service-item"><span class="num">13</span><span class="text">تنظيف الواجهات (زجاج، أليكوبوند، مباني)</span></div>
-            <div class="service-item"><span class="num">14</span><span class="text">تنظيف المستشفيات والعيادات والمخابر (النظافة الصحية)</span></div>
-            <div class="service-item"><span class="num">15</span><span class="text">تنظيف مجاري الصرف الصحي ومياه الأمطار</span></div>
-            <div class="service-item"><span class="num">16</span><span class="text">تنظيف السجاد (بدون نقله – المساجد، الفنادق، المنازل)</span></div>
-            <div class="service-item"><span class="num">17</span><span class="text">تنظيف المساحات الخضراء</span></div>
-            <div class="service-item"><span class="num">18</span><span class="text">توفير عاملات النظافة</span></div>
-            <div class="service-item"><span class="num">19</span><span class="text">كل الخدمات المتعلقة بالنظافة</span></div>
-            <div class="service-item"><span class="num">20</span><span class="text">كل الخدمات المتعلقة بالتعقيم</span></div>
-        </div>
-
-        <!-- ========== 2. خدمات الصيانة ========== -->
-        <div class="section-title">
-            <i class="fas fa-wrench"></i> خدمات الصيانة
-        </div>
-        <div class="section-desc">فريق رجالي متخصص في جميع أنواع الصيانة الفنية والهندسية</div>
-        <div class="services-grid">
-            <div class="service-item"><span class="num">01</span><span class="text">صيانة شبكات التوصيل الكهربائي</span></div>
-            <div class="service-item"><span class="num">02</span><span class="text">صيانة شبكات التوصيل المائي</span></div>
-            <div class="service-item"><span class="num">03</span><span class="text">صيانة شبكات توصيل الغاز</span></div>
-            <div class="service-item"><span class="num">04</span><span class="text">صيانة شبكات الهاتف</span></div>
-            <div class="service-item"><span class="num">05</span><span class="text">صيانة شبكات كاميرات المراقبة</span></div>
-            <div class="service-item"><span class="num">06</span><span class="text">صيانة الشبكات الخاصة بالإعلام الآلي</span></div>
-            <div class="service-item"><span class="num">07</span><span class="text">صيانة شبكات التبريد والتبريد المركزي</span></div>
-            <div class="service-item"><span class="num">08</span><span class="text">صيانة شبكات التدفئة المركزية</span></div>
-            <div class="service-item"><span class="num">09</span><span class="text">صيانة البنايات (تكسيات، عزل مائي، عزل حراري، تعديل مخطط هندسي)</span></div>
-            <div class="service-item"><span class="num">10</span><span class="text">صيانة المجاري المائية للطرقات والمنازل</span></div>
-            <div class="service-item"><span class="num">11</span><span class="text">صيانة المساحات الخضراء</span></div>
-            <div class="service-item"><span class="num">12</span><span class="text">كل الخدمات المتعلقة بالصيانة</span></div>
-        </div>
-
-        <!-- ========== 3. خدمات التطهير ========== -->
-        <div class="section-title">
-            <i class="fas fa-spray-can"></i> خدمات التطهير ومكافحة الآفات
-        </div>
-        <div class="section-desc">تعقيم شامل ومكافحة جميع أنواع الحشرات والقوارض</div>
-        <div class="services-grid">
-            <div class="service-item"><span class="num">01</span><span class="text">كل الخدمات المتعلقة بالتطهير</span></div>
-            <div class="service-item"><span class="num">02</span><span class="text">مكافحة الحشرات الطائرة والزاحفة</span></div>
-            <div class="service-item"><span class="num">03</span><span class="text">مكافحة الزواحف والقوارض الضارة</span></div>
-        </div>
-
-        <!-- ========== معرض الصور (نساء + شباب) ========== -->
-        <div class="gallery-section">
+        <!-- ========== الخدمات ========== -->
+        <div class="services-section">
             <div class="section-title">
-                <i class="fas fa-images"></i> فريق العمل الميداني
+                <i class="fas fa-list-ul"></i> خدماتنا المتكاملة
             </div>
-            <div class="section-desc">نساء محجبات متخصصات في التنظيف، وشباب محترفون في الصيانة</div>
-            <div class="gallery-grid">
-                <div class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1595476108010-b4a1f102b0b1?w=400&h=300&fit=crop&q=80" alt="عاملة تنظيف محجبة">
-                    <div class="caption"><i class="fas fa-female"></i> فريق النظافة النسائي</div>
+            <div class="section-desc">اختر القائمة لاستعراض جميع الخدمات بالتفصيل</div>
+
+            <div class="services-horizontal">
+
+                <!-- النظافة -->
+                <div class="service-dropdown">
+                    <div class="dropdown-header" onclick="toggleDropdown(this)">
+                        <span><i class="fas fa-broom"></i> النظافة</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="dropdown-body">
+                        <ul>
+                            <li><span class="num">01</span> تنظيف المكاتب الإدارية</li>
+                            <li><span class="num">02</span> تنظيف المحلات التجارية</li>
+                            <li><span class="num">03</span> تنظيف المساكن العائلية</li>
+                            <li><span class="num">04</span> تنظيف سلالم العمارات</li>
+                            <li><span class="num">05</span> تنظيف المساحات العامة</li>
+                            <li><span class="num">06</span> تنظيف البنايات حديثة الأشغال</li>
+                            <li><span class="num">07</span> تنظيف السيارات في المنازل</li>
+                            <li><span class="num">08</span> تنظيف المسابح</li>
+                            <li><span class="num">09</span> تنظيف القاعات الرياضية</li>
+                            <li><span class="num">10</span> تنظيف قاعات الحفلات</li>
+                            <li><span class="num">11</span> تنظيف قاعات المؤتمرات</li>
+                            <li><span class="num">12</span> تنظيف المداخن</li>
+                            <li><span class="num">13</span> تنظيف الواجهات</li>
+                            <li><span class="num">14</span> تنظيف المستشفيات والعيادات</li>
+                            <li><span class="num">15</span> تنظيف مجاري الصرف</li>
+                            <li><span class="num">16</span> تنظيف السجاد (بدون نقله)</li>
+                            <li><span class="num">17</span> تنظيف المساحات الخضراء</li>
+                            <li><span class="num">18</span> توفير عاملات النظافة</li>
+                            <li><span class="num">19</span> كل خدمات النظافة</li>
+                            <li><span class="num">20</span> كل خدمات التعقيم</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=300&fit=crop&q=80" alt="عاملة تنظيف محجبة 2">
-                    <div class="caption"><i class="fas fa-female"></i> تعقيم وتنظيف احترافي</div>
+
+                <!-- الصيانة -->
+                <div class="service-dropdown">
+                    <div class="dropdown-header" onclick="toggleDropdown(this)">
+                        <span><i class="fas fa-wrench"></i> الصيانة</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="dropdown-body">
+                        <ul>
+                            <li><span class="num">01</span> صيانة شبكات الكهرباء</li>
+                            <li><span class="num">02</span> صيانة شبكات الماء</li>
+                            <li><span class="num">03</span> صيانة شبكات الغاز</li>
+                            <li><span class="num">04</span> صيانة شبكات الهاتف</li>
+                            <li><span class="num">05</span> صيانة كاميرات المراقبة</li>
+                            <li><span class="num">06</span> صيانة شبكات الإعلام الآلي</li>
+                            <li><span class="num">07</span> صيانة شبكات التبريد</li>
+                            <li><span class="num">08</span> صيانة شبكات التدفئة</li>
+                            <li><span class="num">09</span> صيانة البنايات (عزل، تكسيات)</li>
+                            <li><span class="num">10</span> صيانة المجاري المائية</li>
+                            <li><span class="num">11</span> صيانة المساحات الخضراء</li>
+                            <li><span class="num">12</span> كل خدمات الصيانة</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=300&fit=crop&q=80" alt="شاب يعمل صيانة">
-                    <div class="caption"><i class="fas fa-male"></i> فريق الصيانة الكهربائية</div>
+
+                <!-- التطهير -->
+                <div class="service-dropdown">
+                    <div class="dropdown-header" onclick="toggleDropdown(this)">
+                        <span><i class="fas fa-spray-can"></i> التطهير</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="dropdown-body">
+                        <ul>
+                            <li><span class="num">01</span> كل خدمات التطهير</li>
+                            <li><span class="num">02</span> مكافحة الحشرات الطائرة والزاحفة</li>
+                            <li><span class="num">03</span> مكافحة الزواحف والقوارض</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&q=80" alt="شاب يعمل سباكة">
-                    <div class="caption"><i class="fas fa-male"></i> صيانة شبكات المياه والغاز</div>
-                </div>
+
             </div>
         </div>
 
-        <!-- ===== دعوة للتواصل ===== -->
+        <!-- ========== السلايدر (13 صورة) ========== -->
+        <div class="slider-section">
+            <div class="section-title">
+                <i class="fas fa-images"></i> فريقنا في الميدان
+            </div>
+            <div class="section-desc">نساء محجبات وشباب محترفون — جميعهم يرتدون زي Nanoclean</div>
+
+            <div class="slider-container">
+                <div class="slider-track" id="sliderTrack">
+                    <!-- جميع الصور من مجلد images -->
+                    <div class="slider-slide">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-1.png" alt="فريق النظافة">
+                        <div class="slide-caption"><i class="fas fa-female"></i> فريق النظافة النسائي</div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-2.jpeg" alt="تركيب مكيف">
+                        <div class="slide-caption"><i class="fas fa-snowflake"></i> تركيب وصيانة المكيفات</div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-3.webp" alt="كهربائي">
+                        <div class="slide-caption"><i class="fas fa-bolt"></i> صيانة الكهرباء والعدادات</div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-4.webp" alt="محطة وقود">
+                        <div class="slide-caption"><i class="fas fa-truck"></i> تنظيف المحطات والمساحات الخارجية</div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-5.jpeg" alt="سباكة">
+                        <div class="slide-caption"><i class="fas fa-fire"></i> تركيب شبكات الماء والغاز</div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-6.jpg" alt="مكافحة حشرات">
+                        <div class="slide-caption"><i class="fas fa-bug"></i> مكافحة الحشرات والقوارض</div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-7.jpeg" alt="قاعة أفراح">
+                        <div class="slide-caption"><i class="fas fa-ring"></i> تنظيف قاعات الأفراح والمؤتمرات</div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-8.jpg" alt="تنظيف مكاتب">
+                        <div class="slide-caption"><i class="fas fa-building"></i> تنظيف المكاتب والشركات</div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-9.jpeg" alt="تنظيف منازل">
+                        <div class="slide-caption"><i class="fas fa-home"></i> تنظيف المنازل والفلل</div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-10.jpeg" alt="تعقيم">
+                        <div class="slide-caption"><i class="fas fa-spray-can"></i> تعقيم شامل وتطهير</div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-11.jpg" alt="تنظيف مسابح">
+                        <div class="slide-caption"><i class="fas fa-water"></i> تنظيف المسابح العامة والخاصة</div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-12.jpg" alt="تنظيف واجهات">
+                        <div class="slide-caption"><i class="fas fa-window-maximize"></i> تنظيف الواجهات الزجاجية</div>
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-13.jpg" alt="فريق متكامل">
+                        <div class="slide-caption"><i class="fas fa-users"></i> فريق متكامل تحت إشراف المديرة نانو</div>
+                    </div>
+                </div>
+
+                <button class="slider-btn prev" onclick="moveSlider(-1)"><i class="fas fa-chevron-right"></i></button>
+                <button class="slider-btn next" onclick="moveSlider(1)"><i class="fas fa-chevron-left"></i></button>
+            </div>
+
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+
+        <!-- ===== CTA ===== -->
         <div class="cta-section">
-            <h3>جاهزون لخدمتك الآن</h3>
-            <p>تواصل مع المديرة نانو واحصل على عرض احترافي يناسب احتياجاتك</p>
+            <h3>نحن هنا لخدمتك</h3>
+            <p>تواصل مع المديرة نانو واحصل على خدمة احترافية تلبي توقعاتك</p>
             <div class="cta-buttons">
                 <a href="tel:0657302602" class="btn btn-call"><i class="fas fa-phone-volume"></i> اتصل الآن</a>
                 <a href="https://wa.me/213657302602" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> واتساب</a>
                 <a href="mailto:nanou-milano@live.com" class="btn btn-email"><i class="fas fa-envelope"></i> بريد إلكتروني</a>
+                <a href="https://www.facebook.com/share/1HEGnK7fFN" target="_blank" class="btn btn-facebook"><i class="fab fa-facebook"></i> فيسبوك</a>
             </div>
         </div>
 
@@ -482,12 +780,70 @@
 
     <!-- ===== التذييل ===== -->
     <div class="footer">
-        <div class="brand-foot">🧹 Nanoclean</div>
-        <p style="margin-top:6px;">
+        <div class="brand-foot">🧹 Nano<span>clean</span></div>
+        <p style="margin-top:4px;">
             <i class="fas fa-star"></i> تحت إشراف المديرة نانو — جودة واحترافية <i class="fas fa-star"></i>
         </p>
-        <p style="font-size:13px; margin-top:10px;">© 2026 Nanoclean · Annaba, Algérie · جميع الحقوق محفوظة</p>
+        <p style="font-size:12px; margin-top:8px;">© 2026 Nanoclean · Annaba, Algérie · جميع الحقوق محفوظة</p>
     </div>
+
+    <!-- ===== جافا سكريبت ===== -->
+    <script>
+        // القوائم المنسدلة
+        function toggleDropdown(header) {
+            const body = header.nextElementSibling;
+            const isOpen = body.classList.contains('open');
+            if (isOpen) {
+                body.classList.remove('open');
+                header.classList.remove('open');
+            } else {
+                body.classList.add('open');
+                header.classList.add('open');
+            }
+        }
+
+        // السلايدر
+        let currentIndex = 0;
+        const track = document.getElementById('sliderTrack');
+        const slides = track.querySelectorAll('.slider-slide');
+        const totalSlides = slides.length;
+        const dotsContainer = document.getElementById('sliderDots');
+
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.dataset.index = i;
+            dot.addEventListener('click', function() {
+                goToSlide(parseInt(this.dataset.index));
+            });
+            dotsContainer.appendChild(dot);
+        }
+
+        function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            currentIndex = index;
+            track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function moveSlider(direction) {
+            goToSlide(currentIndex + direction);
+        }
+
+        let autoSlide = setInterval(() => moveSlider(1), 4000);
+
+        document.querySelectorAll('.slider-btn, .dot').forEach(el => {
+            el.addEventListener('click', () => {
+                clearInterval(autoSlide);
+                autoSlide = setInterval(() => moveSlider(1), 4000);
+            });
+        });
+
+        goToSlide(0);
+    </script>
 
 </body>
 </html>
