@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* ===== RESET ===== */
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +32,6 @@
         /* ===== شريط التواصل العلوي (خلفية زرقاء) ===== */
         .top-contact-bar {
             background: #1a5276;
-            /* خلفية زرقاء أنيقة */
             padding: 12px 20px;
             display: flex;
             flex-wrap: wrap;
@@ -100,7 +100,7 @@
             overflow: hidden;
             background: linear-gradient(145deg, #fce4ec 0%, #fdf1f0 40%, #f8e8e4 100%);
         }
-        /* خلفية الصورة - أصبحت أوضح (opacity 0.45) */
+        /* خلفية الصورة */
         .hero::before {
             content: '';
             position: absolute;
@@ -122,65 +122,77 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 900px;
+            max-width: 1200px;
+            width: 100%;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* البطاقة البيضاء (الشعار + الكتابة) */
-        .hero-brand-card {
+        /* ===== البطاقة العلوية: الشعار على اليمين والنص على اليسار ===== */
+        .hero-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 900px;
+            gap: 30px;
+            flex-wrap: wrap;
             background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(10px);
-            padding: 22px 40px;
+            padding: 20px 35px;
             border-radius: 60px;
-            display: inline-flex;
-            align-items: center;
-            gap: 24px;
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 16px 48px rgba(60, 40, 42, 0.08);
             margin-bottom: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
         }
-        /* الشعار أكبر قليلاً */
-        .hero-brand-card img {
-            max-width: 80px;
+        /* الشعار (على اليمين) - أصبح أكبر */
+        .hero-logo-wrapper {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+        .hero-logo-wrapper img {
+            max-width: 110px;
+            /* تكبير الشعار */
             height: auto;
             display: block;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.04));
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.06));
         }
-        .hero-brand-card .brand-text {
+        /* النص (على اليسار) */
+        .hero-text-wrapper {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             text-align: right;
+            flex: 1;
         }
-        .hero-brand-card .brand-text h1 {
-            font-size: 36px;
+        .hero-text-wrapper h1 {
+            font-size: 38px;
             font-weight: 800;
             color: #3d2a2b;
             line-height: 1.1;
         }
-        .hero-brand-card .brand-text h1 span {
+        .hero-text-wrapper h1 span {
             color: #c48b7d;
         }
-        .hero-brand-card .brand-text .sub-tag {
-            font-size: 16px;
+        .hero-text-wrapper .sub-tag {
+            font-size: 17px;
             color: #6e4e52;
             font-weight: 400;
             margin-top: -2px;
         }
-        .hero-brand-card .brand-text .sub-tag i {
+        .hero-text-wrapper .sub-tag i {
             color: #d4af37;
             margin-left: 6px;
         }
-        .hero-brand-card .brand-text .sub-tag .city {
+        .hero-text-wrapper .sub-tag .city {
             color: #c48b7d;
             font-weight: 600;
         }
 
+        /* ===== النص الوسيط (المقولة) ===== */
         .hero-slogan {
             font-size: clamp(1rem, 2.2vw, 1.5rem);
             color: #8a6a6e;
@@ -199,7 +211,7 @@
             margin: 0 6px;
         }
 
-        /* البادجات في خط مستقيم أفقي */
+        /* ===== البادجات (في خط مستقيم) ===== */
         .hero-badges {
             display: flex;
             flex-wrap: wrap;
@@ -342,11 +354,11 @@
             flex-shrink: 0;
         }
 
-        /* ===== السلايدر (تم تحديث الروابط إلى PNG) ===== */
-        .slider-section {
+        /* ===== قسم الفيديو ===== */
+        .video-section {
             margin: 60px 0 30px;
         }
-        .slider-section .section-title {
+        .video-section .section-title {
             font-size: 26px;
             font-weight: 700;
             color: #3d2a2b;
@@ -357,165 +369,76 @@
             border-right: 6px solid #d4af37;
             padding-right: 20px;
         }
-        .slider-section .section-title i {
+        .video-section .section-title i {
             color: #c48b7d;
         }
-        /* النص الجديد: NANOCLEAN بألوان متغيرة */
-        .slider-section .section-desc {
+
+        /* ===== تأثير النص الملون المتغير بسرعة (قوس قزح وامض) ===== */
+        .rainbow-fast {
+            font-weight: 800;
+            font-size: 22px;
+            display: inline-block;
+            animation: rainbowBlink 0.5s steps(1) infinite;
+            /* تغيير سريع جداً */
+        }
+        @keyframes rainbowBlink {
+            0% {
+                color: #ff0000;
+            }
+            10% {
+                color: #ff8800;
+            }
+            20% {
+                color: #ffff00;
+            }
+            30% {
+                color: #00cc00;
+            }
+            40% {
+                color: #0066ff;
+            }
+            50% {
+                color: #4400ff;
+            }
+            60% {
+                color: #8800cc;
+            }
+            70% {
+                color: #ff00aa;
+            }
+            80% {
+                color: #ff0044;
+            }
+            90% {
+                color: #00ffcc;
+            }
+            100% {
+                color: #ff0000;
+            }
+        }
+
+        .video-section .section-desc {
             color: #8a6a6e;
             padding-right: 26px;
             margin-bottom: 25px;
             font-weight: 300;
             font-size: 15px;
         }
-        .slider-section .section-desc .rainbow-text {
-            font-weight: 800;
-            font-size: 20px;
-            background: linear-gradient(90deg, #d4af37, #c48b7d, #d4af37, #c48b7d);
-            background-size: 300% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: rainbowMove 3s linear infinite;
-            display: inline-block;
-        }
-        @keyframes rainbowMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 300% 50%;
-            }
-        }
 
-        .slider-container {
-            position: relative;
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
+        .video-container {
             border-radius: 32px;
             overflow: hidden;
             box-shadow: 0 16px 50px rgba(196, 139, 125, 0.08);
-            background: #fdf6f0;
             border: 1px solid #f0e6e8;
+            background: #1a0f14;
+            /* خلفية داكنة للفيديو */
         }
-        .slider-track {
-            display: flex;
-            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
-        }
-        .slider-slide {
-            min-width: 100%;
-            position: relative;
-        }
-        .slider-slide img {
+        .video-container video {
             width: 100%;
-            height: 450px;
-            object-fit: cover;
+            height: auto;
             display: block;
-            background: #f0e6e8;
-        }
-        .slider-slide .slide-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 25px 25px 18px;
-            background: linear-gradient(transparent, rgba(60, 40, 42, 0.7));
-            color: #fff;
-            font-weight: 600;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .slider-slide .slide-caption i {
-            color: #d4af37;
-            font-size: 20px;
-        }
-
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #fff;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            transition: 0.25s;
-        }
-        .slider-btn:hover {
-            background: rgba(255, 255, 255, 0.35);
-        }
-        .slider-btn.prev {
-            left: 16px;
-        }
-        .slider-btn.next {
-            right: 16px;
-        }
-
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 18px;
-        }
-        .slider-dots .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #d0c2c7;
-            border: none;
-            cursor: pointer;
-            transition: 0.25s;
-        }
-        .slider-dots .dot.active {
-            background: #c48b7d;
-            width: 28px;
-            border-radius: 20px;
-        }
-
-        @media (max-width: 600px) {
-            .slider-slide img {
-                height: 240px;
-            }
-            .slider-btn {
-                width: 34px;
-                height: 34px;
-                font-size: 14px;
-            }
-            .slider-btn.prev {
-                left: 8px;
-            }
-            .slider-btn.next {
-                right: 8px;
-            }
-            .slider-slide .slide-caption {
-                font-size: 13px;
-                padding: 12px 12px 10px;
-            }
-            .hero-brand-card {
-                padding: 12px 20px;
-                gap: 12px;
-                border-radius: 40px;
-            }
-            .hero-brand-card img {
-                max-width: 55px;
-            }
-            .hero-brand-card .brand-text h1 {
-                font-size: 26px;
-            }
-            .hero-brand-card .brand-text .sub-tag {
-                font-size: 13px;
-            }
+            max-height: 600px;
+            object-fit: cover;
         }
 
         /* ===== CTA ===== */
@@ -614,6 +537,31 @@
             color: #d4af37;
         }
 
+        /* ===== تحسينات للشاشات الصغيرة ===== */
+        @media (max-width: 768px) {
+            .hero-top-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 18px 20px;
+            }
+            .hero-text-wrapper {
+                align-items: center;
+                text-align: center;
+            }
+            .hero-logo-wrapper img {
+                max-width: 80px;
+            }
+            .hero-text-wrapper h1 {
+                font-size: 28px;
+            }
+            .hero-text-wrapper .sub-tag {
+                font-size: 14px;
+            }
+            .rainbow-fast {
+                font-size: 18px;
+            }
+        }
         @media (max-width: 600px) {
             .hero {
                 min-height: 80vh;
@@ -632,12 +580,15 @@
                 padding: 10px 12px 30px;
             }
             .services-section .section-title,
-            .slider-section .section-title {
+            .video-section .section-title {
                 font-size: 20px;
             }
             .hero-badges .badge {
                 font-size: 13px;
                 padding: 6px 14px;
+            }
+            .video-container video {
+                max-height: 300px;
             }
         }
     </style>
@@ -659,10 +610,14 @@
     <section class="hero">
         <div class="hero-content">
 
-            <!-- البطاقة البيضاء: الشعار + الكتابة -->
-            <div class="hero-brand-card">
-                <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/logo-icon.png" alt="Nanoclean شعار" />
-                <div class="brand-text">
+            <!-- الصف العلوي: الشعار على اليمين + النص على اليسار -->
+            <div class="hero-top-row">
+                <!-- الشعار (الجهة اليمنى) -->
+                <div class="hero-logo-wrapper">
+                    <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/logo-icon.png" alt="Nanoclean شعار" />
+                </div>
+                <!-- النص (الجهة اليسرى) -->
+                <div class="hero-text-wrapper">
                     <h1>Nano<span>clean</span></h1>
                     <div class="sub-tag">
                         <i class="fas fa-broom"></i> خدمات تنظيف و صيانة إحترافية · <span class="city">ANNABA</span>
@@ -670,13 +625,14 @@
                 </div>
             </div>
 
+            <!-- المقولة -->
             <div class="hero-slogan">
                 <i class="fas fa-quote-right"></i>
                 لأن النظافة تعكس إحترافية المكان
                 <i class="fas fa-quote-left"></i>
             </div>
 
-            <!-- البادجات في خط مستقيم -->
+            <!-- البادجات -->
             <div class="hero-badges">
                 <span class="badge"><i class="fas fa-check-circle"></i> ثقة ومصداقية</span>
                 <span class="badge"><i class="fas fa-star"></i> أعلى المعايير</span>
@@ -687,7 +643,7 @@
         </div>
     </section>
 
-    <!-- ===== المحتوى ===== -->
+    <!-- ===== المحتوى الرئيسي ===== -->
     <div class="container">
 
         <!-- ========== الخدمات ========== -->
@@ -771,91 +727,21 @@
             </div>
         </div>
 
-        <!-- ========== السلايدر (جميع الصور بصيغة PNG) ========== -->
-        <div class="slider-section">
+        <!-- ========== الفيديو ========== -->
+        <div class="video-section">
             <div class="section-title">
-                <i class="fas fa-images"></i> فريقنا في الميدان
+                <i class="fas fa-video"></i> فريقنا في الميدان
             </div>
             <div class="section-desc">
-                <span class="rainbow-text">✦ NANOCLEAN ✦</span> — فريق متكامل تحت إشراف المديرة نانو
+                <span class="rainbow-fast">✦ NANOCLEAN ✦</span> — لحظات من عملنا المتنوع
             </div>
 
-            <div class="slider-container">
-                <div class="slider-track" id="sliderTrack">
-
-                    <!-- 1 -->
-                    <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-1.png" alt="فريق النظافة" loading="lazy">
-                        <div class="slide-caption"><i class="fas fa-female"></i> فريق النظافة النسائي</div>
-                    </div>
-                    <!-- 2 -->
-                    <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-2.png" alt="تركيب مكيف" loading="lazy">
-                        <div class="slide-caption"><i class="fas fa-snowflake"></i> تركيب وصيانة المكيفات</div>
-                    </div>
-                    <!-- 3 -->
-                    <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-3.png" alt="كهربائي" loading="lazy">
-                        <div class="slide-caption"><i class="fas fa-bolt"></i> صيانة الكهرباء والعدادات</div>
-                    </div>
-                    <!-- 4 -->
-                    <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-4.png" alt="محطة وقود" loading="lazy">
-                        <div class="slide-caption"><i class="fas fa-truck"></i> تنظيف المحطات والمساحات الخارجية</div>
-                    </div>
-                    <!-- 5 -->
-                    <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-5.png" alt="سباكة" loading="lazy">
-                        <div class="slide-caption"><i class="fas fa-fire"></i> تركيب شبكات الماء والغاز</div>
-                    </div>
-                    <!-- 6 -->
-                    <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-6.png" alt="مكافحة حشرات" loading="lazy">
-                        <div class="slide-caption"><i class="fas fa-bug"></i> مكافحة الحشرات والقوارض</div>
-                    </div>
-                    <!-- 7 -->
-                    <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-7.png" alt="قاعة أفراح" loading="lazy">
-                        <div class="slide-caption"><i class="fas fa-ring"></i> تنظيف قاعات الأفراح والمؤتمرات</div>
-                    </div>
-                    <!-- 8 -->
-                    <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-8.png" alt="تنظيف مكاتب" loading="lazy">
-                        <div class="slide-caption"><i class="fas fa-building"></i> تنظيف المكاتب والشركات</div>
-                    </div>
-                    <!-- 9 -->
-                    <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-9.png" alt="تنظيف منازل" loading="lazy">
-                        <div class="slide-caption"><i class="fas fa-home"></i> تنظيف المنازل والفلل</div>
-                    </div>
-                    <!-- 10 -->
-                    <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-10.png" alt="تعقيم" loading="lazy">
-                        <div class="slide-caption"><i class="fas fa-spray-can"></i> تعقيم شامل وتطهير</div>
-                    </div>
-                    <!-- 11 -->
-                    <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-11.png" alt="تنظيف مسابح" loading="lazy">
-                        <div class="slide-caption"><i class="fas fa-water"></i> تنظيف المسابح العامة والخاصة</div>
-                    </div>
-                    <!-- 12 -->
-                    <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-12.png" alt="تنظيف واجهات" loading="lazy">
-                        <div class="slide-caption"><i class="fas fa-window-maximize"></i> تنظيف الواجهات الزجاجية</div>
-                    </div>
-                    <!-- 13 -->
-                    <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-13.png" alt="فريق متكامل" loading="lazy">
-                        <div class="slide-caption"><i class="fas fa-users"></i> فريق متكامل تحت إشراف المديرة نانو</div>
-                    </div>
-
-                </div>
-
-                <button class="slider-btn prev" onclick="moveSlider(-1)"><i class="fas fa-chevron-right"></i></button>
-                <button class="slider-btn next" onclick="moveSlider(1)"><i class="fas fa-chevron-left"></i></button>
+            <div class="video-container">
+                <video autoplay loop muted playsinline>
+                    <source src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slideshow.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
             </div>
-
-            <div class="slider-dots" id="sliderDots"></div>
         </div>
 
         <!-- ===== CTA ===== -->
@@ -895,48 +781,6 @@
                 header.classList.add('open');
             }
         }
-
-        // السلايدر
-        let currentIndex = 0;
-        const track = document.getElementById('sliderTrack');
-        const slides = track.querySelectorAll('.slider-slide');
-        const totalSlides = slides.length;
-        const dotsContainer = document.getElementById('sliderDots');
-
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('button');
-            dot.className = 'dot' + (i === 0 ? ' active' : '');
-            dot.dataset.index = i;
-            dot.addEventListener('click', function() {
-                goToSlide(parseInt(this.dataset.index));
-            });
-            dotsContainer.appendChild(dot);
-        }
-
-        function goToSlide(index) {
-            if (index < 0) index = totalSlides - 1;
-            if (index >= totalSlides) index = 0;
-            currentIndex = index;
-            track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
-            document.querySelectorAll('.dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentIndex);
-            });
-        }
-
-        function moveSlider(direction) {
-            goToSlide(currentIndex + direction);
-        }
-
-        let autoSlide = setInterval(() => moveSlider(1), 4000);
-
-        document.querySelectorAll('.slider-btn, .dot').forEach(el => {
-            el.addEventListener('click', () => {
-                clearInterval(autoSlide);
-                autoSlide = setInterval(() => moveSlider(1), 4000);
-            });
-        });
-
-        goToSlide(0);
     </script>
 
 </body>
