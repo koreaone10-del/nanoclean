@@ -28,22 +28,21 @@
             list-style: none;
         }
 
-        /* ===== شريط التواصل العلوي ===== */
+        /* ===== شريط التواصل العلوي (خلفية زرقاء) ===== */
         .top-contact-bar {
-            background: #ffffff;
-            padding: 10px 20px;
+            background: #1a5276;
+            /* خلفية زرقاء أنيقة */
+            padding: 12px 20px;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
             gap: 15px 30px;
-            border-bottom: 2px solid #f5e6e8;
-            box-shadow: 0 2px 12px rgba(180, 120, 140, 0.05);
+            border-bottom: 2px solid #1f618d;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 999;
-            backdrop-filter: blur(8px);
-            background: rgba(255, 255, 255, 0.92);
         }
         .top-contact-bar a {
             display: inline-flex;
@@ -51,25 +50,25 @@
             gap: 8px;
             font-weight: 600;
             font-size: 14px;
-            color: #3d2a2b;
+            color: #ffffff;
             padding: 4px 12px;
             border-radius: 40px;
             transition: 0.2s;
         }
         .top-contact-bar a i {
             font-size: 18px;
-            color: #c48b7d;
+            color: #f1c40f;
             width: 24px;
             text-align: center;
         }
         .top-contact-bar a:hover {
-            background: #fce4ec;
-            color: #a85770;
+            background: rgba(255, 255, 255, 0.12);
+            color: #f1c40f;
         }
         .top-contact-bar .divider {
             width: 1px;
             height: 24px;
-            background: #e8d6da;
+            background: rgba(255, 255, 255, 0.15);
         }
         @media (max-width: 600px) {
             .top-contact-bar {
@@ -89,7 +88,7 @@
             }
         }
 
-        /* ===== الهيرو (خلفية أوضح + شعار مع بطاقة بيضاء) ===== */
+        /* ===== الهيرو (خلفية أوضح) ===== */
         .hero {
             min-height: 92vh;
             display: flex;
@@ -101,17 +100,15 @@
             overflow: hidden;
             background: linear-gradient(145deg, #fce4ec 0%, #fdf1f0 40%, #f8e8e4 100%);
         }
-        /* خلفية الصورة - أصبحت أوضح (opacity 0.3) */
+        /* خلفية الصورة - أصبحت أوضح (opacity 0.45) */
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
             background: url('https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/hero-bg.png') center/cover no-repeat;
-            opacity: 0.3;
-            /* زدنا الشفافية من 0.10 إلى 0.30 */
+            opacity: 0.45;
             filter: blur(1px);
         }
-        /* زخارف جانبية */
         .hero::after {
             content: '';
             position: absolute;
@@ -132,24 +129,24 @@
             align-items: center;
         }
 
-        /* البطاقة البيضاء (تحتوي على الشعار + الكتابة) */
+        /* البطاقة البيضاء (الشعار + الكتابة) */
         .hero-brand-card {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(10px);
-            padding: 20px 35px;
+            padding: 22px 40px;
             border-radius: 60px;
             display: inline-flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 16px 48px rgba(60, 40, 42, 0.08);
             margin-bottom: 15px;
             flex-wrap: wrap;
             justify-content: center;
         }
-        /* الشعار أصبح أصغر */
+        /* الشعار أكبر قليلاً */
         .hero-brand-card img {
-            max-width: 60px;
+            max-width: 80px;
             height: auto;
             display: block;
             filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.04));
@@ -161,7 +158,7 @@
             text-align: right;
         }
         .hero-brand-card .brand-text h1 {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 800;
             color: #3d2a2b;
             line-height: 1.1;
@@ -178,6 +175,10 @@
         .hero-brand-card .brand-text .sub-tag i {
             color: #d4af37;
             margin-left: 6px;
+        }
+        .hero-brand-card .brand-text .sub-tag .city {
+            color: #c48b7d;
+            font-weight: 600;
         }
 
         .hero-slogan {
@@ -198,6 +199,7 @@
             margin: 0 6px;
         }
 
+        /* البادجات في خط مستقيم أفقي */
         .hero-badges {
             display: flex;
             flex-wrap: wrap;
@@ -206,7 +208,7 @@
             margin-top: 15px;
         }
         .hero-badges .badge {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(4px);
             border: 1px solid rgba(196, 139, 125, 0.15);
             padding: 8px 22px;
@@ -340,7 +342,7 @@
             flex-shrink: 0;
         }
 
-        /* ===== السلايدر (تم إصلاح الروابط وتوحيدها) ===== */
+        /* ===== السلايدر (تم تحديث الروابط إلى PNG) ===== */
         .slider-section {
             margin: 60px 0 30px;
         }
@@ -358,12 +360,31 @@
         .slider-section .section-title i {
             color: #c48b7d;
         }
+        /* النص الجديد: NANOCLEAN بألوان متغيرة */
         .slider-section .section-desc {
             color: #8a6a6e;
             padding-right: 26px;
             margin-bottom: 25px;
             font-weight: 300;
             font-size: 15px;
+        }
+        .slider-section .section-desc .rainbow-text {
+            font-weight: 800;
+            font-size: 20px;
+            background: linear-gradient(90deg, #d4af37, #c48b7d, #d4af37, #c48b7d);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowMove 3s linear infinite;
+            display: inline-block;
+        }
+        @keyframes rainbowMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 300% 50%;
+            }
         }
 
         .slider-container {
@@ -392,7 +413,6 @@
             object-fit: cover;
             display: block;
             background: #f0e6e8;
-            /* لون خلفية احتياطي أثناء تحميل الصورة */
         }
         .slider-slide .slide-caption {
             position: absolute;
@@ -488,10 +508,10 @@
                 border-radius: 40px;
             }
             .hero-brand-card img {
-                max-width: 45px;
+                max-width: 55px;
             }
             .hero-brand-card .brand-text h1 {
-                font-size: 24px;
+                font-size: 26px;
             }
             .hero-brand-card .brand-text .sub-tag {
                 font-size: 13px;
@@ -624,7 +644,7 @@
 </head>
 <body>
 
-    <!-- ===== شريط التواصل ===== -->
+    <!-- ===== شريط التواصل (خلفية زرقاء) ===== -->
     <div class="top-contact-bar">
         <a href="tel:0657302602"><i class="fas fa-phone"></i> 0657 30 26 02</a>
         <span class="divider"></span>
@@ -639,13 +659,13 @@
     <section class="hero">
         <div class="hero-content">
 
-            <!-- البطاقة البيضاء: الشعار + الكتابة جنباً إلى جنب -->
+            <!-- البطاقة البيضاء: الشعار + الكتابة -->
             <div class="hero-brand-card">
                 <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/logo-icon.png" alt="Nanoclean شعار" />
                 <div class="brand-text">
                     <h1>Nano<span>clean</span></h1>
                     <div class="sub-tag">
-                        <i class="fas fa-broom"></i> خدمات تنظيف احترافية
+                        <i class="fas fa-broom"></i> خدمات تنظيف و صيانة إحترافية · <span class="city">ANNABA</span>
                     </div>
                 </div>
             </div>
@@ -656,6 +676,7 @@
                 <i class="fas fa-quote-left"></i>
             </div>
 
+            <!-- البادجات في خط مستقيم -->
             <div class="hero-badges">
                 <span class="badge"><i class="fas fa-check-circle"></i> ثقة ومصداقية</span>
                 <span class="badge"><i class="fas fa-star"></i> أعلى المعايير</span>
@@ -750,12 +771,14 @@
             </div>
         </div>
 
-        <!-- ========== السلايدر (13 صورة - جميع الامتدادات) ========== -->
+        <!-- ========== السلايدر (جميع الصور بصيغة PNG) ========== -->
         <div class="slider-section">
             <div class="section-title">
                 <i class="fas fa-images"></i> فريقنا في الميدان
             </div>
-            <div class="section-desc">نساء محجبات وشباب محترفون — جميعهم يرتدون زي Nanoclean</div>
+            <div class="section-desc">
+                <span class="rainbow-text">✦ NANOCLEAN ✦</span> — فريق متكامل تحت إشراف المديرة نانو
+            </div>
 
             <div class="slider-container">
                 <div class="slider-track" id="sliderTrack">
@@ -767,62 +790,62 @@
                     </div>
                     <!-- 2 -->
                     <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-2.jpeg" alt="تركيب مكيف" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-2.png" alt="تركيب مكيف" loading="lazy">
                         <div class="slide-caption"><i class="fas fa-snowflake"></i> تركيب وصيانة المكيفات</div>
                     </div>
                     <!-- 3 -->
                     <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-3.webp" alt="كهربائي" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-3.png" alt="كهربائي" loading="lazy">
                         <div class="slide-caption"><i class="fas fa-bolt"></i> صيانة الكهرباء والعدادات</div>
                     </div>
                     <!-- 4 -->
                     <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-4.webp" alt="محطة وقود" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-4.png" alt="محطة وقود" loading="lazy">
                         <div class="slide-caption"><i class="fas fa-truck"></i> تنظيف المحطات والمساحات الخارجية</div>
                     </div>
                     <!-- 5 -->
                     <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-5.jpeg" alt="سباكة" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-5.png" alt="سباكة" loading="lazy">
                         <div class="slide-caption"><i class="fas fa-fire"></i> تركيب شبكات الماء والغاز</div>
                     </div>
                     <!-- 6 -->
                     <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-6.jpg" alt="مكافحة حشرات" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-6.png" alt="مكافحة حشرات" loading="lazy">
                         <div class="slide-caption"><i class="fas fa-bug"></i> مكافحة الحشرات والقوارض</div>
                     </div>
                     <!-- 7 -->
                     <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-7.jpeg" alt="قاعة أفراح" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-7.png" alt="قاعة أفراح" loading="lazy">
                         <div class="slide-caption"><i class="fas fa-ring"></i> تنظيف قاعات الأفراح والمؤتمرات</div>
                     </div>
                     <!-- 8 -->
                     <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-8.jpg" alt="تنظيف مكاتب" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-8.png" alt="تنظيف مكاتب" loading="lazy">
                         <div class="slide-caption"><i class="fas fa-building"></i> تنظيف المكاتب والشركات</div>
                     </div>
                     <!-- 9 -->
                     <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-9.jpeg" alt="تنظيف منازل" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-9.png" alt="تنظيف منازل" loading="lazy">
                         <div class="slide-caption"><i class="fas fa-home"></i> تنظيف المنازل والفلل</div>
                     </div>
                     <!-- 10 -->
                     <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-10.jpeg" alt="تعقيم" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-10.png" alt="تعقيم" loading="lazy">
                         <div class="slide-caption"><i class="fas fa-spray-can"></i> تعقيم شامل وتطهير</div>
                     </div>
                     <!-- 11 -->
                     <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-11.jpg" alt="تنظيف مسابح" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-11.png" alt="تنظيف مسابح" loading="lazy">
                         <div class="slide-caption"><i class="fas fa-water"></i> تنظيف المسابح العامة والخاصة</div>
                     </div>
                     <!-- 12 -->
                     <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-12.jpg" alt="تنظيف واجهات" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-12.png" alt="تنظيف واجهات" loading="lazy">
                         <div class="slide-caption"><i class="fas fa-window-maximize"></i> تنظيف الواجهات الزجاجية</div>
                     </div>
                     <!-- 13 -->
                     <div class="slider-slide">
-                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-13.jpg" alt="فريق متكامل" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slide-13.png" alt="فريق متكامل" loading="lazy">
                         <div class="slide-caption"><i class="fas fa-users"></i> فريق متكامل تحت إشراف المديرة نانو</div>
                     </div>
 
