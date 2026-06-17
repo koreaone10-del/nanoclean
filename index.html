@@ -3,665 +3,666 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nanoclean | خدمات التنظيف والصيانة</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <title>Nanoclean | خدمات التنظيف والصيانة الإحترافية</title>
+    
+    <!-- الأيقونات والخطوط -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
-        /* ===== RESET ===== */
+        /* ================= المتغيرات والألوان الفاخرة ================= */
+        :root {
+            --primary-dark: #0f172a; /* أزرق ليلي عميق */
+            --primary-light: #1e293b;
+            --accent-gold: #d4af37; /* ذهبي فخم */
+            --accent-rose: #c48b7d; /* نحاسي/وردي */
+            --text-light: #f8fafc;
+            --text-dark: #334155;
+            --bg-color: #f8fafc;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --shadow-soft: 0 10px 40px -10px rgba(15, 23, 42, 0.1);
+            --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.3);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ================= الإعدادات العامة ================= */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-        body {
             font-family: 'Cairo', sans-serif;
-            background: #fcf8f6;
-            color: #3d2a2b;
-            direction: rtl;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        ul {
-            list-style: none;
+            scroll-behavior: smooth;
         }
 
-        /* ===== شريط التواصل العلوي (خلفية زرقاء) ===== */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* تخصيص شريط التمرير (Scrollbar) */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--accent-rose); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
+
+        /* ================= شريط التواصل العلوي المتطور ================= */
         .top-contact-bar {
-            background: #1a5276;
-            padding: 12px 20px;
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary-light));
+            padding: 10px 5%;
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
             justify-content: center;
-            gap: 15px 30px;
-            border-bottom: 2px solid #1f618d;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
-        .top-contact-bar a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            color: #ffffff;
-            padding: 4px 12px;
-            border-radius: 40px;
-            transition: 0.2s;
-        }
-        .top-contact-bar a i {
-            font-size: 18px;
-            color: #f1c40f;
-            width: 24px;
-            text-align: center;
-        }
-        .top-contact-bar a:hover {
-            background: rgba(255, 255, 255, 0.12);
-            color: #f1c40f;
-        }
-        .top-contact-bar .divider {
-            width: 1px;
-            height: 24px;
-            background: rgba(255, 255, 255, 0.15);
-        }
-        @media (max-width: 600px) {
-            .top-contact-bar {
-                gap: 6px 12px;
-                padding: 8px 10px;
-            }
-            .top-contact-bar a {
-                font-size: 12px;
-                padding: 2px 6px;
-            }
-            .top-contact-bar a i {
-                font-size: 15px;
-                width: 20px;
-            }
-            .top-contact-bar .divider {
-                display: none;
-            }
+            gap: 20px;
+            position: relative;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* ===== الهيرو (خلفية أوضح) ===== */
+        .top-contact-bar a {
+            color: var(--text-light);
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            padding: 5px 15px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .top-contact-bar a i {
+            color: var(--accent-gold);
+            font-size: 16px;
+        }
+
+        .top-contact-bar a:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+            color: var(--accent-gold);
+        }
+
+        /* ================= قسم الهيرو (الواجهة الرئيسية) ================= */
         .hero {
-            min-height: 92vh;
+            position: relative;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
             padding: 40px 20px;
-            position: relative;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
             overflow: hidden;
-            background: linear-gradient(145deg, #fce4ec 0%, #fdf1f0 40%, #f8e8e4 100%);
         }
-        /* خلفية الصورة */
+
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
             background: url('https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/hero-bg.png') center/cover no-repeat;
-            opacity: 0.45;
-            filter: blur(1px);
+            opacity: 0.15;
+            filter: blur(2px);
+            z-index: 0;
         }
+
         .hero::after {
             content: '';
             position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
             top: -20%;
             right: -10%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
             border-radius: 50%;
+            z-index: 0;
+            animation: pulse 6s infinite alternate;
         }
+
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 1200px;
             width: 100%;
-            padding: 20px;
+            max-width: 1000px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
+            animation: slideUp 1s ease-out;
         }
 
-        /* ===== البطاقة العلوية: الشعار على اليمين والنص على اليسار ===== */
-        .hero-top-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: var(--shadow-soft);
             width: 100%;
-            max-width: 900px;
-            gap: 30px;
-            flex-wrap: wrap;
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(10px);
-            padding: 20px 35px;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 16px 48px rgba(60, 40, 42, 0.08);
-            margin-bottom: 15px;
-        }
-        /* الشعار (على اليمين) - أصبح أكبر */
-        .hero-logo-wrapper {
-            flex-shrink: 0;
             display: flex;
+            flex-direction: column;
             align-items: center;
+            position: relative;
+            overflow: hidden;
         }
-        .hero-logo-wrapper img {
-            max-width: 110px;
-            /* تكبير الشعار */
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-rose));
+        }
+
+        .hero-logo {
+            width: 130px;
             height: auto;
-            display: block;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.06));
+            margin-bottom: 20px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+            animation: float 4s ease-in-out infinite;
         }
-        /* النص (على اليسار) */
-        .hero-text-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: right;
-            flex: 1;
-        }
-        .hero-text-wrapper h1 {
-            font-size: 38px;
-            font-weight: 800;
-            color: #3d2a2b;
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            color: var(--primary-dark);
             line-height: 1.1;
+            margin-bottom: 10px;
         }
-        .hero-text-wrapper h1 span {
-            color: #c48b7d;
+
+        .hero-title span {
+            background: linear-gradient(45deg, var(--accent-rose), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .hero-text-wrapper .sub-tag {
-            font-size: 17px;
-            color: #6e4e52;
-            font-weight: 400;
-            margin-top: -2px;
-        }
-        .hero-text-wrapper .sub-tag i {
-            color: #d4af37;
-            margin-left: 6px;
-        }
-        .hero-text-wrapper .sub-tag .city {
-            color: #c48b7d;
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-dark);
             font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
         }
 
-        /* ===== النص الوسيط (المقولة) ===== */
+        .hero-subtitle .city {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
         .hero-slogan {
-            font-size: clamp(1rem, 2.2vw, 1.5rem);
-            color: #8a6a6e;
-            font-weight: 300;
-            margin: 12px 0 20px;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--primary-dark);
             font-style: italic;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(4px);
-            padding: 8px 24px;
-            border-radius: 60px;
-            display: inline-block;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-        }
-        .hero-slogan i {
-            color: #d4af37;
-            margin: 0 6px;
+            font-weight: 600;
+            padding: 15px 30px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50px;
+            border: 1px dashed var(--accent-gold);
+            margin: 20px 0;
         }
 
-        /* ===== البادجات (في خط مستقيم) ===== */
         .hero-badges {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 12px 24px;
-            margin-top: 15px;
-        }
-        .hero-badges .badge {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(196, 139, 125, 0.15);
-            padding: 8px 22px;
-            border-radius: 40px;
-            color: #4d3437;
-            font-weight: 500;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-        }
-        .hero-badges .badge i {
-            color: #d4af37;
-            font-size: 16px;
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        /* ===== باقي المحتوى ===== */
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 20px 25px 40px;
-        }
-
-        /* ===== الخدمات ===== */
-        .services-section {
-            margin: 30px 0 20px;
-        }
-        .services-section .section-title {
-            font-size: 26px;
+        .badge {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 30px;
             font-weight: 700;
-            color: #3d2a2b;
-            margin-bottom: 4px;
+            font-size: 0.95rem;
+            color: var(--primary-dark);
             display: flex;
             align-items: center;
-            gap: 12px;
-            border-right: 6px solid #d4af37;
-            padding-right: 20px;
-        }
-        .services-section .section-title i {
-            color: #c48b7d;
-        }
-        .services-section .section-desc {
-            color: #8a6a6e;
-            padding-right: 26px;
-            margin-bottom: 25px;
-            font-weight: 300;
-            font-size: 15px;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: var(--transition);
         }
 
-        .services-horizontal {
+        .badge i { color: var(--accent-gold); font-size: 1.1rem; }
+        .badge:hover { transform: translateY(-5px); box-shadow: var(--shadow-glow); }
+
+        /* ================= الحاوية المركزية ================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            font-weight: 800;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-header h2 i { color: var(--accent-rose); }
+        
+        .section-header p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        /* ================= قسم الخدمات (أكورديون متطور) ================= */
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
-        .service-dropdown {
-            background: #ffffff;
-            border-radius: 24px;
-            border: 1px solid #f0e6e8;
+
+        .service-box {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
             overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
-            transition: 0.25s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: var(--transition);
         }
-        .service-dropdown:hover {
-            border-color: #d4af37;
-            box-shadow: 0 12px 32px rgba(196, 139, 125, 0.08);
+
+        .service-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: rgba(212, 175, 55, 0.3);
         }
-        .service-dropdown .dropdown-header {
-            padding: 16px 22px;
+
+        .service-header {
+            padding: 25px;
+            background: linear-gradient(to right, #ffffff, #f8fafc);
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
-            background: #fcf8f6;
-            font-weight: 700;
-            font-size: 18px;
-            color: #3d2a2b;
-            transition: 0.2s;
             user-select: none;
-        }
-        .service-dropdown .dropdown-header:hover {
-            background: #fce4ec;
-        }
-        .service-dropdown .dropdown-header i:first-child {
-            color: #c48b7d;
-            margin-left: 12px;
-            font-size: 20px;
-        }
-        .service-dropdown .dropdown-header .arrow {
-            color: #c48b7d;
-            transition: 0.3s;
-        }
-        .service-dropdown .dropdown-header.open .arrow {
-            transform: rotate(180deg);
-        }
-        .service-dropdown .dropdown-body {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.45s ease, padding 0.3s ease;
-            padding: 0 22px;
-            background: #ffffff;
-        }
-        .service-dropdown .dropdown-body.open {
-            max-height: 900px;
-            padding: 8px 22px 22px;
-        }
-        .service-dropdown .dropdown-body ul li {
-            padding: 7px 0;
-            border-bottom: 1px solid #f5edef;
-            font-size: 14px;
-            font-weight: 400;
-            color: #4d3437;
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-        }
-        .service-dropdown .dropdown-body ul li:last-child {
-            border-bottom: none;
-        }
-        .service-dropdown .dropdown-body ul li .num {
-            background: #fce4ec;
-            color: #a85770;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 11px;
-            flex-shrink: 0;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
         }
 
-        /* ===== قسم الفيديو ===== */
-        .video-section {
-            margin: 60px 0 30px;
+        .service-header.active {
+            border-bottom-color: var(--accent-gold);
+            background: #f8fafc;
         }
-        .video-section .section-title {
-            font-size: 26px;
-            font-weight: 700;
-            color: #3d2a2b;
-            margin-bottom: 4px;
+
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .service-icon-wrap {
+            width: 45px;
+            height: 45px;
+            background: rgba(196, 139, 125, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-rose);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .service-box:hover .service-icon-wrap {
+            background: var(--accent-rose);
+            color: white;
+        }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            transition: transform 0.4s ease;
+        }
+
+        .service-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .service-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            background: white;
+        }
+
+        .service-body-inner {
+            padding: 20px 25px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* تقسيم القوائم الطويلة لعمودين في الشاشات الكبيرة */
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .service-list li {
             display: flex;
             align-items: center;
             gap: 12px;
-            border-right: 6px solid #d4af37;
-            padding-right: 20px;
-        }
-        .video-section .section-title i {
-            color: #c48b7d;
+            padding: 10px;
+            background: #f8fafc;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: var(--transition);
+            border: 1px solid transparent;
         }
 
-        /* ===== تأثير النص الملون المتغير بسرعة (قوس قزح وامض) ===== */
-        .rainbow-fast {
+        .service-list li:hover {
+            background: white;
+            border-color: var(--accent-rose);
+            transform: translateX(-5px); /* اتجاه لليمين */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .num {
+            background: linear-gradient(135deg, var(--accent-rose), #a85770);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
             font-weight: 800;
-            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        /* ================= قسم الفيديو ================= */
+        .video-section {
+            margin-top: 80px;
+            background: var(--primary-dark);
+            border-radius: 40px;
+            padding: 60px 20px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.3);
+            text-align: center;
+        }
+
+        .video-section .section-header h2 {
+            color: white;
+        }
+
+        .video-section .section-header p {
+            color: #94a3b8;
+        }
+
+        /* تأثير التدرج اللوني المتحرك الأنيق (بديل قوس قزح القديم) */
+        .animated-gradient-text {
+            font-size: 1.5rem;
+            font-weight: 900;
             display: inline-block;
-            animation: rainbowBlink 0.5s steps(1) infinite;
-            /* تغيير سريع جداً */
-        }
-        @keyframes rainbowBlink {
-            0% {
-                color: #ff0000;
-            }
-            10% {
-                color: #ff8800;
-            }
-            20% {
-                color: #ffff00;
-            }
-            30% {
-                color: #00cc00;
-            }
-            40% {
-                color: #0066ff;
-            }
-            50% {
-                color: #4400ff;
-            }
-            60% {
-                color: #8800cc;
-            }
-            70% {
-                color: #ff00aa;
-            }
-            80% {
-                color: #ff0044;
-            }
-            90% {
-                color: #00ffcc;
-            }
-            100% {
-                color: #ff0000;
-            }
+            background: linear-gradient(270deg, #ff8a00, #e52e71, #9b51e0, #00d2ff, #ff8a00);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 5s ease infinite;
+            margin-top: 10px;
         }
 
-        .video-section .section-desc {
-            color: #8a6a6e;
-            padding-right: 26px;
-            margin-bottom: 25px;
-            font-weight: 300;
-            font-size: 15px;
-        }
-
-        .video-container {
-            border-radius: 32px;
+        .video-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 16px 50px rgba(196, 139, 125, 0.08);
-            border: 1px solid #f0e6e8;
-            background: #1a0f14;
-            /* خلفية داكنة للفيديو */
+            position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5), 0 0 0 4px rgba(212, 175, 55, 0.2);
+            background: #000;
         }
-        .video-container video {
+
+        .video-wrapper video {
             width: 100%;
             height: auto;
+            max-height: 550px;
             display: block;
-            max-height: 600px;
-            object-fit: cover;
+            object-fit: contain;
         }
 
-        /* ===== CTA ===== */
+        /* ================= قسم الدعوة لاتخاذ إجراء (CTA) ================= */
         .cta-section {
-            background: linear-gradient(145deg, #fce4ec, #fdf1f0);
+            margin-top: 80px;
+            background: linear-gradient(135deg, white, #fdfbfb);
             border-radius: 40px;
-            padding: 35px 25px;
+            padding: 60px 40px;
             text-align: center;
-            margin: 40px 0 20px;
-            color: #3d2a2b;
-            border: 1px solid #f0e6e8;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(196, 139, 125, 0.2);
+            position: relative;
+            overflow: hidden;
         }
+
+        .cta-section::before {
+            content: '\f500'; /* أيقونة يوزر فون */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            font-size: 250px;
+            color: rgba(196, 139, 125, 0.03);
+            right: -50px;
+            bottom: -50px;
+            transform: rotate(-15deg);
+        }
+
         .cta-section h3 {
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 6px;
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-weight: 900;
         }
+
         .cta-section p {
-            color: #6e4e52;
-            margin-bottom: 22px;
-            font-weight: 300;
-            font-size: 15px;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-inline: auto;
+            line-height: 1.6;
         }
+
         .cta-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 14px;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
         }
+
         .btn {
-            padding: 12px 34px;
-            border-radius: 60px;
-            font-weight: 700;
-            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            font-size: 16px;
-            transition: 0.25s;
+            gap: 12px;
+            transition: var(--transition);
             border: none;
             cursor: pointer;
-        }
-        .btn-call {
-            background: #c48b7d;
-            color: #fff;
-        }
-        .btn-call:hover {
-            background: #b07466;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(196, 139, 125, 0.3);
-        }
-        .btn-whatsapp {
-            background: #25D366;
-            color: #fff;
-        }
-        .btn-whatsapp:hover {
-            background: #128C7E;
-            transform: translateY(-3px);
-        }
-        .btn-email {
-            background: #8a6a6e;
-            color: #fff;
-        }
-        .btn-email:hover {
-            background: #6f4e52;
-            transform: translateY(-3px);
-        }
-        .btn-facebook {
-            background: #1877f2;
-            color: #fff;
-        }
-        .btn-facebook:hover {
-            background: #0d65d9;
-            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        /* ===== التذييل ===== */
-        .footer {
+        .btn-call { background: var(--accent-rose); color: white; }
+        .btn-call:hover { background: #b07466; transform: translateY(-5px); box-shadow: 0 15px 25px rgba(196, 139, 125, 0.4); }
+        
+        .btn-whatsapp { background: #25D366; color: white; }
+        .btn-whatsapp:hover { background: #1ebd57; transform: translateY(-5px); box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4); }
+        
+        .btn-email { background: var(--primary-dark); color: white; }
+        .btn-email:hover { background: var(--primary-light); transform: translateY(-5px); }
+        
+        .btn-facebook { background: #1877f2; color: white; }
+        .btn-facebook:hover { background: #1464cc; transform: translateY(-5px); box-shadow: 0 15px 25px rgba(24, 119, 242, 0.4); }
+
+        /* ================= الفوتر ================= */
+        footer {
+            background: white;
+            padding: 40px 20px;
             text-align: center;
-            padding: 25px 20px 12px;
-            border-top: 1px solid #f0e6e8;
-            margin-top: 30px;
-            color: #b69aa6;
-            font-weight: 300;
-            font-size: 14px;
-        }
-        .footer .brand-foot {
-            font-size: 20px;
-            font-weight: 700;
-            color: #3d2a2b;
-        }
-        .footer .brand-foot span {
-            color: #c48b7d;
-        }
-        .footer i {
-            color: #d4af37;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 60px;
         }
 
-        /* ===== تحسينات للشاشات الصغيرة ===== */
-        @media (max-width: 768px) {
-            .hero-top-row {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 18px 20px;
-            }
-            .hero-text-wrapper {
-                align-items: center;
-                text-align: center;
-            }
-            .hero-logo-wrapper img {
-                max-width: 80px;
-            }
-            .hero-text-wrapper h1 {
-                font-size: 28px;
-            }
-            .hero-text-wrapper .sub-tag {
-                font-size: 14px;
-            }
-            .rainbow-fast {
-                font-size: 18px;
-            }
+        .footer-brand {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
         }
-        @media (max-width: 600px) {
-            .hero {
-                min-height: 80vh;
-            }
-            .services-horizontal {
-                grid-template-columns: 1fr;
-            }
-            .cta-section {
-                padding: 25px 16px;
-            }
-            .btn {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-            .container {
-                padding: 10px 12px 30px;
-            }
-            .services-section .section-title,
-            .video-section .section-title {
-                font-size: 20px;
-            }
-            .hero-badges .badge {
-                font-size: 13px;
-                padding: 6px 14px;
-            }
-            .video-container video {
-                max-height: 300px;
-            }
+
+        .footer-brand span { color: var(--accent-rose); }
+        
+        .footer-supervision {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-supervision i { color: var(--accent-gold); margin: 0 5px; }
+
+        .copyright {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        /* ================= الأنيميشن (Keyframes) ================= */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.1); opacity: 0.8; }
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ================= التجاوب مع الشاشات (Responsive) ================= */
+        @media (max-width: 768px) {
+            .top-contact-bar { justify-content: center; padding: 10px; gap: 10px; }
+            .top-contact-bar a { font-size: 0.85rem; padding: 5px 10px; }
+            .hero-title { font-size: 2.2rem; }
+            .glass-card { padding: 25px 15px; border-radius: 20px; }
+            .hero-logo { width: 90px; }
+            .service-list { grid-template-columns: 1fr; }
+            .cta-buttons { flex-direction: column; width: 100%; }
+            .btn { justify-content: center; width: 100%; }
+            .video-section { padding: 40px 15px; border-radius: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== شريط التواصل (خلفية زرقاء) ===== -->
+    <!-- ================= شريط التواصل العلوي ================= -->
     <div class="top-contact-bar">
         <a href="tel:0657302602"><i class="fas fa-phone"></i> 0657 30 26 02</a>
-        <span class="divider"></span>
         <a href="https://wa.me/213657302602" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
-        <span class="divider"></span>
-        <a href="mailto:nanou-milano@live.com"><i class="fas fa-envelope"></i> البريد الإلكتروني</a>
-        <span class="divider"></span>
-        <a href="https://www.facebook.com/share/1HEGnK7fFN" target="_blank"><i class="fab fa-facebook"></i> فيسبوك</a>
+        <a href="mailto:nanou-milano@live.com"><i class="fas fa-envelope"></i> راسلنا عبر البريد</a>
+        <a href="https://www.facebook.com/share/1HEGnK7fFN" target="_blank"><i class="fab fa-facebook"></i> صفحتنا على فيسبوك</a>
     </div>
 
-    <!-- ===== الهيرو ===== -->
+    <!-- ================= الواجهة الرئيسية (الهيرو) ================= -->
     <section class="hero">
         <div class="hero-content">
-
-            <!-- الصف العلوي: الشعار على اليمين + النص على اليسار -->
-            <div class="hero-top-row">
-                <!-- الشعار (الجهة اليمنى) -->
-                <div class="hero-logo-wrapper">
-                    <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/logo-icon.png" alt="Nanoclean شعار" />
+            <div class="glass-card">
+                <img src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/logo-icon.png" alt="شعار نانو كلين" class="hero-logo" />
+                <h1 class="hero-title">Nano<span>clean</span></h1>
+                
+                <div class="hero-subtitle">
+                    <i class="fas fa-broom" style="color: var(--accent-rose);"></i> 
+                    خدمات تنظيف وصيانة إحترافية 
+                    <span class="city">ANNABA</span>
                 </div>
-                <!-- النص (الجهة اليسرى) -->
-                <div class="hero-text-wrapper">
-                    <h1>Nano<span>clean</span></h1>
-                    <div class="sub-tag">
-                        <i class="fas fa-broom"></i> خدمات تنظيف و صيانة إحترافية · <span class="city">ANNABA</span>
-                    </div>
+
+                <div class="hero-slogan">
+                    <i class="fas fa-quote-right" style="color: var(--accent-gold); margin-left: 8px;"></i>
+                    لأن النظافة تعكس إحترافية المكان
+                    <i class="fas fa-quote-left" style="color: var(--accent-gold); margin-right: 8px;"></i>
+                </div>
+
+                <div class="hero-badges">
+                    <span class="badge"><i class="fas fa-shield-alt"></i> ثقة ومصداقية</span>
+                    <span class="badge"><i class="fas fa-gem"></i> أعلى المعايير</span>
+                    <span class="badge"><i class="fas fa-leaf"></i> منتجات آمنة</span>
+                    <span class="badge"><i class="fas fa-user-tie"></i> فريق مؤهل</span>
                 </div>
             </div>
-
-            <!-- المقولة -->
-            <div class="hero-slogan">
-                <i class="fas fa-quote-right"></i>
-                لأن النظافة تعكس إحترافية المكان
-                <i class="fas fa-quote-left"></i>
-            </div>
-
-            <!-- البادجات -->
-            <div class="hero-badges">
-                <span class="badge"><i class="fas fa-check-circle"></i> ثقة ومصداقية</span>
-                <span class="badge"><i class="fas fa-star"></i> أعلى المعايير</span>
-                <span class="badge"><i class="fas fa-leaf"></i> منتجات آمنة</span>
-                <span class="badge"><i class="fas fa-users"></i> فريق مدرب ومؤهل</span>
-            </div>
-
         </div>
     </section>
 
-    <!-- ===== المحتوى الرئيسي ===== -->
+    <!-- ================= المحتوى الرئيسي ================= -->
     <div class="container">
 
-        <!-- ========== الخدمات ========== -->
-        <div class="services-section">
-            <div class="section-title">
-                <i class="fas fa-list-ul"></i> خدماتنا المتكاملة
-            </div>
-            <div class="section-desc">اختر القائمة لاستعراض جميع الخدمات بالتفصيل</div>
+        <!-- ===== قسم الخدمات ===== -->
+        <div class="section-header reveal">
+            <h2><i class="fas fa-layer-group"></i> خدماتنا المتكاملة</h2>
+            <p>اختر القسم المناسب لاستعراض باقة خدماتنا بالتفصيل</p>
+        </div>
 
-            <div class="services-horizontal">
-                <!-- النظافة -->
-                <div class="service-dropdown">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><i class="fas fa-broom"></i> النظافة</span>
-                        <i class="fas fa-chevron-down arrow"></i>
+        <div class="services-grid">
+            
+            <!-- أكورديون النظافة -->
+            <div class="service-box reveal">
+                <div class="service-header" onclick="toggleService(this)">
+                    <div class="service-title">
+                        <div class="service-icon-wrap"><i class="fas fa-broom"></i></div>
+                        خدمات النظافة
                     </div>
-                    <div class="dropdown-body">
-                        <ul>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="service-body">
+                    <div class="service-body-inner">
+                        <ul class="service-list">
                             <li><span class="num">01</span> تنظيف المكاتب الإدارية</li>
                             <li><span class="num">02</span> تنظيف المحلات التجارية</li>
                             <li><span class="num">03</span> تنظيف المساكن العائلية</li>
@@ -685,15 +686,20 @@
                         </ul>
                     </div>
                 </div>
+            </div>
 
-                <!-- الصيانة -->
-                <div class="service-dropdown">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><i class="fas fa-wrench"></i> الصيانة</span>
-                        <i class="fas fa-chevron-down arrow"></i>
+            <!-- أكورديون الصيانة -->
+            <div class="service-box reveal" style="transition-delay: 0.1s;">
+                <div class="service-header" onclick="toggleService(this)">
+                    <div class="service-title">
+                        <div class="service-icon-wrap"><i class="fas fa-wrench"></i></div>
+                        خدمات الصيانة
                     </div>
-                    <div class="dropdown-body">
-                        <ul>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="service-body">
+                    <div class="service-body-inner">
+                        <ul class="service-list">
                             <li><span class="num">01</span> صيانة شبكات الكهرباء</li>
                             <li><span class="num">02</span> صيانة شبكات الماء</li>
                             <li><span class="num">03</span> صيانة شبكات الغاز</li>
@@ -709,15 +715,20 @@
                         </ul>
                     </div>
                 </div>
+            </div>
 
-                <!-- التطهير -->
-                <div class="service-dropdown">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><i class="fas fa-spray-can"></i> التطهير</span>
-                        <i class="fas fa-chevron-down arrow"></i>
+            <!-- أكورديون التطهير -->
+            <div class="service-box reveal" style="transition-delay: 0.2s;">
+                <div class="service-header" onclick="toggleService(this)">
+                    <div class="service-title">
+                        <div class="service-icon-wrap"><i class="fas fa-spray-can-sparkles"></i></div>
+                        خدمات التطهير
                     </div>
-                    <div class="dropdown-body">
-                        <ul>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="service-body">
+                    <div class="service-body-inner">
+                        <ul class="service-list" style="grid-template-columns: 1fr;">
                             <li><span class="num">01</span> كل خدمات التطهير</li>
                             <li><span class="num">02</span> مكافحة الحشرات الطائرة والزاحفة</li>
                             <li><span class="num">03</span> مكافحة الزواحف والقوارض</li>
@@ -725,18 +736,18 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <!-- ========== الفيديو ========== -->
-        <div class="video-section">
-            <div class="section-title">
-                <i class="fas fa-video"></i> فريقنا في الميدان
-            </div>
-            <div class="section-desc">
-                <span class="rainbow-fast">✦ NANOCLEAN ✦</span> — لحظات من عملنا المتنوع
+        <!-- ===== قسم الفيديو ===== -->
+        <div class="video-section reveal">
+            <div class="section-header">
+                <h2><i class="fas fa-video"></i> فريقنا في الميدان</h2>
+                <div class="animated-gradient-text">✦ NANOCLEAN ✦</div>
+                <p style="margin-top: 10px;">لحظات توثق احترافية وتنوع أعمالنا</p>
             </div>
 
-            <div class="video-container">
+            <div class="video-wrapper">
                 <video autoplay loop muted playsinline>
                     <source src="https://raw.githubusercontent.com/koreaone10-del/nanoclean/main/images/slideshow.mp4" type="video/mp4">
                     متصفحك لا يدعم تشغيل الفيديو.
@@ -744,43 +755,75 @@
             </div>
         </div>
 
-        <!-- ===== CTA ===== -->
-        <div class="cta-section">
-            <h3>نحن هنا لخدمتك</h3>
-            <p>تواصل مع المديرة نانو واحصل على خدمة احترافية تلبي توقعاتك</p>
+        <!-- ===== قسم اتخاذ الإجراء (CTA) ===== -->
+        <div class="cta-section reveal">
+            <h3>نحن هنا لخدمتك بكل احترافية</h3>
+            <p>تواصل مع <strong>المديرة نانو</strong> مباشرة واحصل على استشارة مجانية وخدمة تلبي وتتجاوز توقعاتك. فريقنا مستعد لتلبية طلبك في أي وقت.</p>
+            
             <div class="cta-buttons">
-                <a href="tel:0657302602" class="btn btn-call"><i class="fas fa-phone-volume"></i> اتصل الآن</a>
-                <a href="https://wa.me/213657302602" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> واتساب</a>
-                <a href="mailto:nanou-milano@live.com" class="btn btn-email"><i class="fas fa-envelope"></i> بريد إلكتروني</a>
-                <a href="https://www.facebook.com/share/1HEGnK7fFN" target="_blank" class="btn btn-facebook"><i class="fab fa-facebook"></i> فيسبوك</a>
+                <a href="tel:0657302602" class="btn btn-call"><i class="fas fa-phone-volume"></i> 0657 30 26 02</a>
+                <a href="https://wa.me/213657302602" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> تواصل واتساب</a>
+                <a href="mailto:nanou-milano@live.com" class="btn btn-email"><i class="fas fa-envelope-open-text"></i> إرسال إيميل</a>
+                <a href="https://www.facebook.com/share/1HEGnK7fFN" target="_blank" class="btn btn-facebook"><i class="fab fa-facebook-f"></i> صفحة فيسبوك</a>
             </div>
         </div>
 
     </div>
 
-    <!-- ===== التذييل ===== -->
-    <div class="footer">
-        <div class="brand-foot">🧹 Nano<span>clean</span></div>
-        <p style="margin-top:4px;">
+    <!-- ================= الفوتر ================= -->
+    <footer>
+        <div class="footer-brand">Nano<span>clean</span></div>
+        <div class="footer-supervision">
             <i class="fas fa-star"></i> تحت إشراف المديرة نانو — جودة واحترافية <i class="fas fa-star"></i>
-        </p>
-        <p style="font-size:12px; margin-top:8px;">© 2026 Nanoclean · Annaba, Algérie · جميع الحقوق محفوظة</p>
-    </div>
+        </div>
+        <div class="copyright">
+            &copy; <span id="year"></span> Nanoclean · Annaba, Algérie · جميع الحقوق محفوظة
+        </div>
+    </footer>
 
-    <!-- ===== جافا سكريبت ===== -->
+    <!-- ================= سكربت التفاعلات ================= -->
     <script>
-        // القوائم المنسدلة
-        function toggleDropdown(header) {
+        // دالة التحكم في الأكورديون (القوائم المنسدلة للخدمات)
+        function toggleService(header) {
             const body = header.nextElementSibling;
-            const isOpen = body.classList.contains('open');
-            if (isOpen) {
-                body.classList.remove('open');
-                header.classList.remove('open');
+            const allHeaders = document.querySelectorAll('.service-header');
+            const allBodies = document.querySelectorAll('.service-body');
+
+            // إغلاق جميع القوائم الأخرى عند فتح قائمة جديدة (اختياري، يجعل المظهر أرتب)
+            allHeaders.forEach(h => {
+                if(h !== header) h.classList.remove('active');
+            });
+            allBodies.forEach(b => {
+                if(b !== body) b.style.maxHeight = null;
+            });
+
+            // فتح أو إغلاق القائمة المطلوبة
+            header.classList.toggle('active');
+            if (body.style.maxHeight) {
+                body.style.maxHeight = null;
             } else {
-                body.classList.add('open');
-                header.classList.add('open');
+                // حساب الارتفاع المطلوب بناءً على المحتوى الداخلي
+                body.style.maxHeight = body.scrollHeight + "px";
             }
         }
+
+        // تأثيرات الظهور عند التمرير للأسفل (Scroll Reveal)
+        const reveals = document.querySelectorAll('.reveal');
+        function revealOnScroll() {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+            reveals.forEach(reveal => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // تشغيل أولي
+
+        // تحديث السنة التلقائي في الفوتر
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 
 </body>
